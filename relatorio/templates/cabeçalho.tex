@@ -1,20 +1,17 @@
 \documentclass[11pt]{article} % use larger type; default would be 10pt
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-\title{Relatório Padrão}
-\author{Autor}
+\title{ {{ titulo }} }
+\author{ {{ autor }} }
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
 \begin{document}
 \maketitle
 
-\section{First section}
+{% for section in sections %}
+    {{section}}
 
-Your text goes here.
-
-\subsection{A subsection}
-
-More text.
+{% endfor %}
 
 \end{document}

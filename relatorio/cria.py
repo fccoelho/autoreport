@@ -1,16 +1,29 @@
-
+from jinja2 import Environment, PackageLoader
 import os
 
 class Relatorio:
     template_dir = "dados"#os.path.join("..", "dados")
     def __init__(self, titulo, autor, template='cabeçalho.tex') -> None:
-        self.template = template
-        self.cabeçalho=None
+        env = Environment(loader=PackageLoader("relatorio"))
+        self.template = env.get_template(template)
+        self.cabeçalho = None
         self.titulo = titulo
         self.autor = autor
-        self.inicializa()
+        self.sections = []
+        self.context = {'autor': self.autor,
+                        'titulo': self.titulo,
+                        'sections': self.sections
+                        }
 
-    def inicializa(self):
-        with open(os.path.join(self.template_dir,'cabeçalho.tex')) as f:
-            self.cabeçalho = f.read()
+
+    def _render(self):
+        return self.template.render(self.context)
+
+    def add_section(self, section):
+        self.sections.append(section)
+
+
+
+
+
 
