@@ -9,8 +9,9 @@
 \begin{document}
 \maketitle
 
-{% for section in sections %}
-   \section{ {{section}} }
+{% for titulo, conteudo in sections.items() %}
+   \section{ {{titulo}} }
+    {{conteudo}}
 
 {% endfor %}
 

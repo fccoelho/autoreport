@@ -9,7 +9,7 @@ class Relatorio:
         self.cabeçalho = None
         self.titulo = titulo
         self.autor = autor
-        self.sections = []
+        self.sections = {}
         self.context = {'autor': self.autor,
                         'titulo': self.titulo,
                         'sections': self.sections
@@ -19,8 +19,8 @@ class Relatorio:
     def _render(self):
         return self.template.render(self.context)
 
-    def add_section(self, section):
-        self.sections.append(section)
+    def add_section(self, título, conteúdo):
+        self.sections[título] = conteúdo
 
 
 

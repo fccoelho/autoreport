@@ -14,6 +14,6 @@ class TestCria(unittest.TestCase):
 
     def test_add_section(self):
         R = Relatorio('Meu relatório', 'Eu mesmo')
-        R.add_section("\section{primeira sessão}")
+        R.add_section({"título":"Primeira seção", "conteúdo": "conteúdo da primeira seção"})
         tex = R._render()
-        self.assertIn("\section{primeira sessão}", tex)
+        self.assertIn("Primeira seção}", tex)
